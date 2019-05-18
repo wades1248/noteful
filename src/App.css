@@ -1,0 +1,33 @@
+*{
+  list-style: none;
+}
+.main{
+  display: flex;
+  flex-direction: row;
+}
+.header{
+  display: block;
+  height: auto;
+  width: 100%;
+  font-size: 60px;
+
+}
+.Sidebar{
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  height: auto;
+  font-size: 30px; 
+}
+.notelist{
+  display: block;
+  width: 100%;
+}
+.noteLi, .folder{
+  border: 3px solid black;
+  margin:5px;
+  padding: 5px;
+}
+.active{
+  background-color: aqua;
+}
