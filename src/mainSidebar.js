@@ -1,11 +1,11 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom';
-import "./dummy-store";
+import Context from './Context';
 
 class MainSideBar extends React.Component {
-
+    static contextType= Context
     render(){
-        const  folderList = this.props.store.folders.map(folder => {
+        const  folderList = this.context.folders.map(folder => {
             return(
             <li className='folder'
                 id={folder.id}>
