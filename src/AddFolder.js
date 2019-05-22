@@ -10,7 +10,7 @@ handleSubmit = event => {
     const newFolder = {
         name: event.target['folder-name'].value
     }
-    fetch(`http://penguin.linux.test:9090/folders`, {
+    fetch(`http://localhost:9090/folders`, {
         method:'POST',
         headers:{
             'content-type': 'application/json'

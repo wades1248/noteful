@@ -40,8 +40,8 @@ class App extends React.Component {
 
   componentDidMount(){
     Promise.all([
-      fetch(`http://penguin.linux.test:9090/notes`),
-      fetch(`http://penguin.linux.test:9090/folders`)
+      fetch(`http://localhost:9090/notes`),
+      fetch(`http://localhost:9090/folders`)
     ])
     .then(([noteResponse, folderRespsponse]) => {
       if(!noteResponse.ok)

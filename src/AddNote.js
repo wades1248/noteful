@@ -13,7 +13,7 @@ class AddNote extends React.Component{
             folderId: event.target['new-note-folder'].value,
             modified: new Date(),
         }
-        fetch(`http://penguin.linux.test:9090/notes`, {
+        fetch(`http://localhost:9090/notes`, {
             method:'POST',
             headers:{
                 'content-type': 'application/json'
