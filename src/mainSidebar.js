@@ -1,5 +1,5 @@
 import React from 'react';
-import {NavLink} from 'react-router-dom';
+import {NavLink, Link} from 'react-router-dom';
 import Context from './Context';
 
 class MainSideBar extends React.Component {
@@ -20,7 +20,9 @@ class MainSideBar extends React.Component {
                 <ul>
                     {folderList}
                 </ul>
-                <button>Add Folder</button>
+                <Link to={'/AddFolder'}>
+                    <button className='addButton'>Add Folder</button>
+                </Link>
             </div>
         )
     }

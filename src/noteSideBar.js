@@ -1,5 +1,6 @@
 import React from 'react';
 import {withRouter} from 'react-router-dom';
+import PropTypes from 'prop-types';
 import Context from './Context';
 
 class NoteSideBar extends React.Component {
@@ -9,11 +10,14 @@ class NoteSideBar extends React.Component {
         const CurrentNote= this.context.notes.find(note => note.id===NoteID);
         const CurrentFolder= this.context.folders.find(folder => folder.id === CurrentNote.folderId)
         return(
-            <div className='folder'>
+            <div className='Sidebar'>
                 <h2 className='backbutton' onClick={() => this.props.history.goBack()}>Go Back</h2>
-                <h2>{CurrentFolder.name}</h2>
+                <p className='folder'>Folder: {CurrentFolder.name}</p>
             </div>
         )
     }
 }
 export default withRouter(NoteSideBar);
+NoteSideBar.propTypes ={
+    id: PropTypes.string.isRequired
+}

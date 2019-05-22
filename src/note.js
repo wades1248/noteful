@@ -2,6 +2,7 @@ import React from 'react';
 import {withRouter} from 'react-router-dom';
 import NoteSideBar from './noteSideBar';
 import Context from './Context';
+import ErrorBoundry from './ErrorBoundry';
 
 class Note extends React.Component{
     static defaultProps ={
@@ -9,7 +10,8 @@ class Note extends React.Component{
             params: []
         }
     };
-    static contextType= Context;
+    static contextType = Context
+
     onDelete = e => {
         e.preventDefault()
         const noteId = this.props.match.params.id
@@ -38,12 +40,14 @@ class Note extends React.Component{
         const CurrentNote= this.context.notes.find(note => note.id===NoteID);
         return(
             <div className='main'>
-            <NoteSideBar 
-             id={NoteID} 
-             />
-            <div>
-                <div className='noteLi'
-                id={CurrentNote.id}>
+            <ErrorBoundry>
+              <NoteSideBar 
+                id={NoteID} 
+              />
+            </ErrorBoundry>
+            <div className="noteLi">
+                <div
+                id={NoteID}>
                     <h2>{CurrentNote.name}</h2>
                     <p>Modified: {CurrentNote.modified}</p>
                     <button onClick={this.onDelete}>Delete Note</button>

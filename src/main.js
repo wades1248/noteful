@@ -2,6 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import MainSideBar from './mainSidebar';
 import Context from './Context';
+import ErrorBoundry from './ErrorBoundry';
 
 class Main extends React.Component{
     static contextType = Context;
@@ -20,16 +21,19 @@ class Main extends React.Component{
             )
         })
         return(
+
                 <div className='main'>
-            
-                <MainSideBar />
-                <div>
-                    <ul className='notelist'>
-                    {NoteList}
-                    </ul>
-                    <button>ADD NOTE</button>
-                </div>
-                
+                    <ErrorBoundry>
+                        <MainSideBar />
+                    </ErrorBoundry>
+                    <div>
+                        <ul className='notelist'>
+                            {NoteList}
+                        </ul>
+                        <Link to='/AddNote'>
+                            <button className="addButton">ADD NOTE</button>
+                        </Link>
+                    </div>             
                 </div> 
         )
     }

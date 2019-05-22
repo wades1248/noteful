@@ -1,10 +1,12 @@
 import React from 'react';
-import {Route, Switch, Link,withRouter} from 'react-router-dom';
-
+import {Route, Switch, Link} from 'react-router-dom';
 import Main from './main';
 import Folder from './folder';
 import Note from './note';
+import AddFolder from './AddFolder';
+import AddNote from './AddNote';
 import Context from './Context';
+import ErrorBoundry from './ErrorBoundry';
 import './App.css';
 
 class App extends React.Component {
@@ -12,6 +14,22 @@ class App extends React.Component {
     notes:[],
     folders: []
 
+  }
+  handleAddFolder = folder => {
+    this.setState({
+      folders: [
+        ...this.state.folders,
+        folder
+      ]
+    })
+  }
+  handleAddNote = note =>{
+    this.setState({
+      notes:[
+        ...this.state.notes,
+        note
+      ]
+    })
   }
   handleDeleteNote = noteId => {
     console.log(noteId)
@@ -49,6 +67,8 @@ class App extends React.Component {
       notes: this.state.notes,
       folders: this.state.folders,
       handleDeleteNote: this.handleDeleteNote,
+      handleAddFolder: this.handleAddFolder,
+      handleAddNote: this.handleAddNote
     }
   return (
     <Context.Provider value={contextValue}>
@@ -62,12 +82,20 @@ class App extends React.Component {
         <Route exact path ='/'>
           <Main  />
         </Route>
-        <Route path='/folder/:id'
+        <ErrorBoundry>
+          <Route path='/folder/:id'
           render={(props)=> <Folder {...props} />}
-        />
-        <Route path='/note/:id'
-          render={(props) => <Note {...props}/>}
-        />
+          />
+          <Route path='/note/:id'            
+            render={Note}
+          />
+          <Route path='/AddFolder'
+            render={AddFolder}
+          />
+          <Route path='/AddNote'
+            render={AddNote}
+          />
+        </ErrorBoundry>
       </Switch>    
     </div>
     </Context.Provider>

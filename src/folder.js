@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import PropTypes from 'prop-types';
 import MainSideBar from './mainSidebar';
 import Context from './Context';
 
@@ -22,7 +23,7 @@ class Folder extends React.Component {
                     <h2>{note.name}</h2>
                     </Link>
                     <p>Modified: {note.modified}</p>
-                    <button>Delete Note</button>
+                    <button onClick={ () => {this.context.handleDeleteNote(note.id)}}>Delete Note</button>
                 </li>
                 )
             }
@@ -36,10 +37,15 @@ class Folder extends React.Component {
                     <ul className='notelist'>
                         {findNotes}
                     </ul>
-                    <button>ADD NOTE</button>
+                    <Link to='/AddNote'>
+                        <button className='addButton'>ADD NOTE</button>
+                    </Link>
                 </div>
             </div>
-        )
+        );
     }
 }
 export default Folder;
+Folder.propTypes={
+    match: PropTypes.object.isRequired
+}
