@@ -8,7 +8,7 @@ class MainSideBar extends React.Component {
         const  folderList = this.context.folders.map(folder => {
             return(
             <li className='folder'
-                id={folder.id}>
+                id={folder.id} key={folder.id}>
                 <NavLink to={`/folder/${folder.id}`} >
                     {folder.name}
                 </NavLink>

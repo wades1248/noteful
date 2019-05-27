@@ -11,7 +11,7 @@ class Main extends React.Component{
             return(
     
                 <li className='noteLi'
-                    id={note.id}>
+                    id={note.id} key={note.id}>
                     <Link to={`/note/${note.id}`}>
                     <h2>{note.name}</h2>
                     </Link>

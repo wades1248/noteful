@@ -16,7 +16,7 @@ class Note extends React.Component{
         e.preventDefault()
         const noteId = this.props.match.params.id
         
-        fetch(`http://penguin.linux.test:9090/notes/${noteId}`, {
+        fetch(`http://localhost:9090/notes/${noteId}`, {
           method: 'DELETE',
           headers: {
             'content-type': 'application/json'

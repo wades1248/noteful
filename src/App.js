@@ -47,7 +47,7 @@ class App extends React.Component {
       if(!noteResponse.ok)
         return noteResponse.json().then(e => Promise.reject(e))
       if(!folderRespsponse.ok)
-        return folderRespsponse.josn().then(e => Promise.reject(e))
+        return folderRespsponse.json().then(e => Promise.reject(e))
       return Promise.all([
         noteResponse.json(),
         folderRespsponse.json()
