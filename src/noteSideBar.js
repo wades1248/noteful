@@ -7,8 +7,8 @@ class NoteSideBar extends React.Component {
     static contextType = Context;
     render(){
         const NoteID= this.props.id
-        const CurrentNote= this.context.notes.find(note => note.id===NoteID);
-        const CurrentFolder= this.context.folders.find(folder => folder.id === CurrentNote.folderId)
+        const CurrentNote= this.context.notes.find(note => note.id === parseInt(NoteID));
+        const CurrentFolder= this.context.folders.find(folder => folder.id === parseInt(CurrentNote.folder_id))
         return(
             <div className='Sidebar'>
                 <h2 className='backbutton' onClick={() => this.props.history.goBack()}>Go Back</h2>

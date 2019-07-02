@@ -21,7 +21,7 @@ class Main extends React.Component{
             )
         })
         return(
-
+ 
                 <div className='main'>
                     <ErrorBoundry>
                         <MainSideBar />
@@ -35,6 +35,7 @@ class Main extends React.Component{
                         </Link>
                     </div>             
                 </div> 
+
         )
     }
 }

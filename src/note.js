@@ -10,35 +10,36 @@ class Note extends React.Component{
             params: []
         }
     };
-    static contextType = Context
+    static contextType = Context;
 
     onDelete = e => {
-        e.preventDefault()
-        const noteId = this.props.match.params.id
-        
-        fetch(`http://localhost:9090/notes/${noteId}`, {
-          method: 'DELETE',
-          headers: {
-            'content-type': 'application/json'
-          },
+      e.preventDefault()
+      const noteId = this.props.match.params.id
+      
+      fetch(`http://localhost:8000/api/notes/${noteId}`, {
+        method: 'DELETE',
+        headers: {
+          'content-type': 'application/json'
+        },
+      })
+        .then(res => {
+          if (!res.ok)
+            return res.json().then(e => Promise.reject(e))
+          return res.json()
         })
-          .then(res => {
-            if (!res.ok)
-              return res.json().then(e => Promise.reject(e))
-            return res.json()
-          })
-          .then(() => {
-            this.context.handleDeleteNote(noteId)
-          })
-          .catch(error => {
-            console.error({ error })
-          });
-          this.props.history.push('/');
-      }
+        .then(() => {
+          this.context.handleDeleteNote(noteId)
+        })
+        .catch(error => {
+          console.error({ error })
+        });
+        this.props.history.push('/');
+    }
     render(){
-        const NoteID= this.props.match.params.id;
-        const CurrentNote= this.context.notes.find(note => note.id===NoteID);
+        const NoteID = this.props.match.params.id;
+        const CurrentNote = this.context.notes.find(note => note.id === parseInt(NoteID));
         return(
+          
             <div className='main'>
             <ErrorBoundry>
               <NoteSideBar 

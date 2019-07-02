@@ -15,7 +15,7 @@ class AddNote extends React.Component{
         const newNote = {
             name: event.target['note-name'].value,
             content: event.target['note-content'].value,
-            folderId: event.target['new-note-folder'].value,
+            folder_id: event.target['new-note-folder'].value,
             modified: new Date(),
         }
         this.setState({
@@ -51,7 +51,7 @@ class AddNote extends React.Component{
     }
 
     handleSubmit = (note) => {
-        fetch(`http://localhost:9090/notes`, {
+        fetch(`http://localhost:8000/api/notes`, {
             method:'POST',
             headers:{
                 'content-type': 'application/json'

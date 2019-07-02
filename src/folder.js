@@ -10,12 +10,12 @@ class Folder extends React.Component {
             params: []
         }
     }
-    static contextType=Context
+    static contextType=Context;
     render(){
         const selectedFolderId= this.props.match.params.id
         
-        const findNotes= this.context.notes.map(note =>{
-            if(note.folderId === selectedFolderId){
+        const findNotes= this.context.notes.map(note =>  {
+            if(note.folder_id === parseInt(selectedFolderId)){
                 return(
                     <li className='noteLi'
                     id={note.id}>

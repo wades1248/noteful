@@ -32,16 +32,15 @@ class App extends React.Component {
     })
   }
   handleDeleteNote = noteId => {
-    console.log(noteId)
     this.setState({
       notes: this.state.notes.filter(note => note.id !== noteId)
-    });
+    })
   }
-
+  
   componentDidMount(){
     Promise.all([
-      fetch(`http://localhost:9090/notes`),
-      fetch(`http://localhost:9090/folders`)
+      fetch(`http://localhost:8000/api/notes/`),
+      fetch(`http://localhost:8000/api/folders/`)
     ])
     .then(([noteResponse, folderRespsponse]) => {
       if(!noteResponse.ok)
